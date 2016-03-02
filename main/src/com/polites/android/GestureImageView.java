@@ -376,18 +376,20 @@ public class GestureImageView extends ImageView  {
 	}
 
 	protected void initImage() {
-		if(this.drawable != null) {
-			this.drawable.setAlpha(alpha);
-			this.drawable.setFilterBitmap(true);
-			if(colorFilter != null) {
-				this.drawable.setColorFilter(colorFilter);
+			if (this.drawable != null) {
+				this.drawable.setAlpha(alpha);
+				this.drawable.setFilterBitmap(true);
+				if (colorFilter != null) {
+					this.drawable.setColorFilter(colorFilter);
+				}
+				layout = false;
+				startingScale = -1.0f;
 			}
-		}
-		
-		if(!layout) {
-			requestLayout();
-			redraw();
-		}
+
+			if (!layout) {
+				requestLayout();
+				reset();
+			}
 	}
 
 	public void setImageBitmap(Bitmap image) {
